@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<Movies xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Movie>
+    <Id>180eb091-c529-4d57-8a9d-ce51d362a495</Id>
+    <Name>XML as an exciting data source... Not!</Name>
+    <Year>2019</Year>
+    <Plot>The movie is set in a galaxy far, far away where XML is considered exciting</Plot>
+    <ImdbRating>4.2</ImdbRating>
+    <TicketPrice>79</TicketPrice>
+    <IsShowing>true</IsShowing>
+    <LastUpdated>05/06/2019 11:19:54</LastUpdated>
+  </Movie>
+  <Movie>
+    <Id>eb7031f8-ff4c-49a8-9920-5490c61c7c1c</Id>
+    <Name>Singleton is an evil motherf****r</Name>
+    <Year>2019</Year>
+    <Plot>This is the story about a good guy from 1994 which turned evil over time</Plot>
+    <ImdbRating>9.9</ImdbRating>
+    <TicketPrice>109</TicketPrice>
+    <IsShowing>true</IsShowing>
+    <LastUpdated>05/06/2019 11:19:54</LastUpdated>
+  </Movie>
+</Movies>

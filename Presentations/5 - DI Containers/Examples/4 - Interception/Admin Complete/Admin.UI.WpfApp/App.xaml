@@ -1,0 +1,43 @@
+﻿<Application x:Class="Admin.UI.WpfApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Admin.UI.WpfApp"
+             Startup="Application_Startup"
+             Exit="Application_Exit">
+    <Application.Resources>
+        <Style x:Key="BaseStyle">
+            <Setter Property="Control.Margin" Value="10" />
+        </Style>
+
+        <Style TargetType="Button" BasedOn="{StaticResource BaseStyle}">
+        </Style>
+
+        <Style TargetType="TextBox" BasedOn="{StaticResource BaseStyle}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="TextBox.ToolTip"
+                            Value="{Binding RelativeSource={RelativeSource Self}, 
+                Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+            <Style.Setters>
+                <Setter Property="Validation.ErrorTemplate">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Foreground="Red" FontWeight="Bold" Margin="0,3,5,0">!</TextBlock>
+                                <AdornedElementPlaceholder />
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style.Setters>
+        </Style>
+
+        <Style TargetType="TextBlock" BasedOn="{StaticResource BaseStyle}">
+        </Style>
+
+        <Style TargetType="ComboBox" BasedOn="{StaticResource BaseStyle}">
+        </Style>
+    </Application.Resources>
+</Application>

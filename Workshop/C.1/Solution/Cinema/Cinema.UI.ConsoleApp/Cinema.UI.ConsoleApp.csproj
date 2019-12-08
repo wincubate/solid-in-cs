@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Unity" Version="5.11.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cinema.DataAccess.Sql\Cinema.DataAccess.Sql.csproj" />
+    <ProjectReference Include="..\Cinema.DataAccess.Xml\Cinema.DataAccess.Xml.csproj" />
+    <ProjectReference Include="..\Cinema.Domain\Cinema.Domain.csproj" />
+    <ProjectReference Include="..\Cinema.PresentationLogic\Cinema.PresentationLogic.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Wincubate.Solid.Module01.DomainLayer</RootNamespace>
+    <AssemblyName>Wincubate.Solid.Module01.DomainLayer</AssemblyName>
+  </PropertyGroup>
+
+</Project>
