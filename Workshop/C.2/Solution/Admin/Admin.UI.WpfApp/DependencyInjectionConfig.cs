@@ -24,7 +24,7 @@ namespace Admin.UI.WpfApp
                 .RegisterType<ICreateUserService, CreateUserService>()
                 .RegisterType<IMessageTemplateRepository, SqlMessageTemplateRepository>()
                 .RegisterType<MessageTemplateContext>()
-                .RegisterType<SendGridEmailTransmissionStrategy>()
+                .RegisterType<Messenger>()
                 .RegisterType<IMessageTransmissionStrategy,RedirectionMessageTransmissionStrategyProxy>(
                     new InjectionConstructor(
                         new ResolvedParameter<SendGridEmailTransmissionStrategy>(),
