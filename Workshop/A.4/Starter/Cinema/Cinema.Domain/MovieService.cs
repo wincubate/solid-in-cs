@@ -9,7 +9,7 @@ namespace Cinema.Domain
     {
         private readonly IMovieRepository _repository;
 
-        public MovieService( IMovieRepository repository )
+        public MovieService(IMovieRepository repository)
         {
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
@@ -17,9 +17,8 @@ namespace Cinema.Domain
         public IEnumerable<MovieShowing> GetMoviesShowing()
         {
             var moviesShowing = _repository
-                .GetAll()
-                .Where(movie => movie.IsShowing)
-                .Select( movie => movie.ToMovieShowing() )
+                .GetAllShowing()
+                .Select(movie => movie.ToMovieShowing())
                 ;
 
             return moviesShowing;

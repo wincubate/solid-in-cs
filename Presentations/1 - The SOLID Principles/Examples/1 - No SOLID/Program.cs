@@ -2,35 +2,38 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Wincubate.Solid.Module01.DomainLayer;
 
 namespace Wincubate.Solid.Module01
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             string sourceFilePath = @"..\..\..\..\Files\StockPositions1.csv";
-            string inputDataAsString = GetDataAsString(sourceFilePath);
+            string inputDataAsString = await GetDataAsStringAsync(sourceFilePath);
 
             IEnumerable<StockPosition> stockPositions = Parse(inputDataAsString);
 
-            IEnumerable<StockPosition> output = Compute(stockPositions);
+            IEnumerable<StockPosition> output = Execute(stockPositions);
 
             string outputDataAsString = SerializeData(output);
 
             string destinationFilePath = @"..\..\..\..\Files\Result.csv";
-            StoreDataAsString(destinationFilePath, outputDataAsString);
+            await StoreDataAsStringAsync(destinationFilePath, outputDataAsString);
         }
 
-        static string GetDataAsString(string sourceFilePath)
+        static Task<string> GetDataAsStringAsync(string sourceFilePath)
         {
-            return File.ReadAllText(sourceFilePath);
+            return File.ReadAllTextAsync(sourceFilePath);
         }
 
-        static void StoreDataAsString(string destinationFilePath, string outputDataAsString)
+        static Task StoreDataAsStringAsync(
+            string destinationFilePath,
+            string outputDataAsString)
         {
-            File.WriteAllText(destinationFilePath, outputDataAsString);
+            return File.WriteAllTextAsync(destinationFilePath, outputDataAsString);
         }
 
         static IEnumerable<StockPosition> Parse(string dataAsString)
@@ -55,7 +58,7 @@ namespace Wincubate.Solid.Module01
             }
         }
 
-        static IEnumerable<StockPosition> Compute(IEnumerable<StockPosition> inputData)
+        static IEnumerable<StockPosition> Execute(IEnumerable<StockPosition> inputData)
         {
             return inputData
                 .GroupBy(stockPosition => stockPosition.Ticker)

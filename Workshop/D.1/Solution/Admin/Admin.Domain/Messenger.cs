@@ -10,7 +10,7 @@ namespace Admin.Domain
         private readonly IMessageTemplateRepository _repository;
         private readonly IMessageTransmissionStrategy _strategy;
         private readonly ILoggerFactory _loggerFactory;
-
+        
         private readonly TextSubstitutor _substitutor;
 
         public Messenger(
@@ -29,14 +29,15 @@ namespace Admin.Domain
         public async Task SendAsync(Message message)
         {
             ILogger logger = _loggerFactory.Create(nameof(Messenger));
-            logger.Info( "Sending message", message );
 
-            MessageTemplate messageTemplate = _repository
-                .GetAll( mt => mt.Kind == message.MessageTemplateKind && mt.Culture == message.Culture)
-                .SingleOrDefault()
-                ?? throw new AdminException(
-                    message: $"No available message template with id {message.MessageTemplateKind} in culture {message.Culture}",
-                    reason: AdminExceptionReason.Messaging
+            MessageTemplate messageTemplate = await _repository
+                .FindAsync(mt => mt.Kind == message.MessageTemplateKind && mt.Culture == message.Culture)
+                .ContinueWith( t => t.Result
+                    .SingleOrDefault()
+                    ?? throw new AdminException(
+                        message: $"No available message template with id {message.MessageTemplateKind} in culture {message.Culture}",
+                        reason: AdminExceptionReason.Messaging
+                    )
                 )
                 ;
 

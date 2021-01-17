@@ -1,7 +1,9 @@
+using System.Threading.Tasks;
+
 namespace Wincubate.Solid.Module01
 {
     interface IReadStorage
     {
-        string GetDataAsString();
+        Task<string> GetDataAsStringAsync();
     }
 }

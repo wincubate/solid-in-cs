@@ -2,6 +2,7 @@ using Cinema.DataAccess.Sql;
 using Cinema.DataAccess.Xml;
 using Cinema.Domain;
 using Cinema.Domain.Interfaces;
+using Cinema.PresentationLogic;
 using System;
 using System.Collections.Generic;
 using Unity;
@@ -26,6 +27,7 @@ namespace Cinema.UI.WpfApp
                 .RegisterType<MovieContext>()
                 .RegisterType<ITimeProvider, DefaultTimeProvider>()
                 .RegisterType<IMovieService,MovieService>()
+                .RegisterType<IUserContext, NullUserContext>()
                 ;
         }
 

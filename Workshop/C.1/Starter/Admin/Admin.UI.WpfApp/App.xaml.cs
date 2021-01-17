@@ -1,8 +1,15 @@
 using Admin.DataAccess.Sql;
 using Admin.Domain;
+using Admin.Domain.Email;
 using Admin.Domain.Interfaces;
 using Admin.Domain.Sms;
 using Admin.UI.WpfApp.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace Admin.UI.WpfApp
@@ -29,7 +36,7 @@ namespace Admin.UI.WpfApp
             // UI Layer
             CreateUserViewModel vm = new CreateUserViewModel(service);
 
-            this.MainWindow = new CreateUserWindow( vm );
+            this.MainWindow = new CreateUserWindow(vm);
             this.MainWindow.Show();
         }
     }

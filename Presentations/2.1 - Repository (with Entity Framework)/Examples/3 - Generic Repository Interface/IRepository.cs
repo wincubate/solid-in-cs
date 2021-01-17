@@ -1,16 +1,20 @@
 using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Linq.Expressions;
-using Wincubate.RepositoryExamples.Data;
 
 namespace Wincubate.RepositoryExamples
 {
-    interface IRepository<T> where T : IEntity
+    // This is generic to any repository regardless of type
+    interface IRepository<TEntity> where TEntity : class
     {
-        T GetById( int id );
-        IQueryable<T> GetAll();
-        IQueryable<T> GetAll( Expression<Func<T, bool>> filter );
-        void Add( T product );
-        void Remove( T product );
+        TEntity GetById( int id );
+        IEnumerable<TEntity> GetAll();
+        IEnumerable<TEntity> Find( Expression<Func<TEntity, bool>> filter );
+
+        void Add( TEntity product );
+        void AddRange(IEnumerable<TEntity> entities);
+
+        void Remove( TEntity product );
+        void RemoveRange(IEnumerable<TEntity> entities);
     }
 }

@@ -1,7 +1,7 @@
 using Cinema.Domain.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Xml.Linq;
 
 namespace Cinema.DataAccess.Xml
@@ -15,12 +15,11 @@ namespace Cinema.DataAccess.Xml
             _filePath = filePath ?? throw new ArgumentNullException(nameof(filePath));
         }
 
-        public IQueryable<Movie> GetAll()
+        public IEnumerable<Movie> GetAll()
         {
             XDocument xml = XDocument.Load(_filePath);
             return xml
                 .Descendants("Movie")
-                .AsQueryable()
                 .Select(element => new Movie
                 {
                     Id = (Guid)element.Element(nameof(Movie.Id)),
@@ -35,9 +34,9 @@ namespace Cinema.DataAccess.Xml
                 ;
         }
 
-        public IQueryable<Movie> GetAll(Expression<Func<Movie, bool>> filter)
+        public IEnumerable<Movie> GetAllShowing()
             => GetAll()
-            .Where(filter)
+            .Where(movie => movie.IsShowing)
             ;
     }
 }

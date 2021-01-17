@@ -4,6 +4,7 @@ using Admin.Domain.Email;
 using Admin.Domain.Interfaces;
 using Admin.Domain.Logging;
 using Admin.Domain.Logging.Interfaces;
+using Admin.Domain.Sms;
 using Admin.UI.WpfApp.ViewModels;
 using System;
 using Unity;
@@ -13,7 +14,7 @@ namespace Admin.UI.WpfApp
 {
     internal class DependencyInjectionConfig : IDisposable
     {
-        private readonly IUnityContainer _container;
+        private IUnityContainer _container;
 
         public DependencyInjectionConfig()
         {
@@ -23,27 +24,31 @@ namespace Admin.UI.WpfApp
         public void Register()
         {
             _container
-                .RegisterType<ILoggerFactory,FileLoggerFactory>()
+                .RegisterType<ILoggerFactory,ConsoleLoggerFactory>()
                 .RegisterType<ICreateUserService, CreateUserService>()
+                .RegisterType<Messenger>()
                 .RegisterType<IMessageTemplateRepository, SqlMessageTemplateRepository>()
                 .RegisterType<MessageTemplateContext>()
-                .RegisterType<SendGridEmailTransmissionStrategy>()
-                .RegisterType<IMessageTransmissionStrategy,RedirectionMessageTransmissionStrategyProxy>(
+                .RegisterType<IMessageTransmissionStrategy, RedirectionMessageTransmissionStrategyProxy>(
                     new InjectionConstructor(
                         new ResolvedParameter<SendGridEmailTransmissionStrategy>(),
                         new ResolvedParameter<RedirectionConfiguration>()
                     )
                 )
-                .RegisterInstance( new RedirectionConfiguration(
+                .RegisterInstance(new RedirectionConfiguration(
                     email: "jgh@wincubate.net",
                     phone: "+4522123631"
-                    )                
+                    )
                 )
                 .RegisterType<CreateUserViewModel>()
+                .RegisterType<CreateUserWindow>()
                 ;
         }
 
-        public T Resolve<T>() => _container.Resolve<T>();
+        public T Resolve<T>()
+        {
+            return _container.Resolve<T>();
+        }
 
         public void Dispose()
         {

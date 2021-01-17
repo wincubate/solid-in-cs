@@ -9,7 +9,7 @@ namespace Wincubate.RepositoryExamples
     {
         Product GetById( int id );
         IQueryable<Product> GetAll();
-        IQueryable<Product> GetAll( Expression<Func<Product, bool>> filter );
+        IQueryable<Product> Find( Expression<Func<Product, bool>> filter );
         void Add( Product product );
         void Remove( Product product );
     }

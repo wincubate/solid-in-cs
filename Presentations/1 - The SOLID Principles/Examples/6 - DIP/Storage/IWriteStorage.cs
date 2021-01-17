@@ -1,7 +1,9 @@
+using System.Threading.Tasks;
+
 namespace Wincubate.Solid.Module01
 {
     interface IWriteStorage
     {
-        void StoreDataAsString(string outputDataAsString);
+        Task StoreDataAsStringAsync(string outputDataAsString);
     }
 }

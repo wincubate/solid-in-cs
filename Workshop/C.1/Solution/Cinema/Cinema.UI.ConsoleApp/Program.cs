@@ -12,12 +12,11 @@ namespace Cinema.UI.ConsoleApp
         static void Main(string[] args)
         {
             // Composition Root
-            using (DependencyInjectionConfig diConfig = new DependencyInjectionConfig())
+            using( DependencyInjectionConfig diConfig = new DependencyInjectionConfig())
             {
                 diConfig.Register();
-
                 IMovieService service = diConfig.Resolve<IMovieService>();
-                
+
                 // UI Layer
                 IEnumerable<MovieShowing> movies = service.GetMoviesShowing();
                 MainViewModel vm = new MainViewModel(movies);
@@ -27,6 +26,12 @@ namespace Cinema.UI.ConsoleApp
                     Console.WriteLine(movie.DisplayText);
                 }
             }
+
+            //IMovieService service = new MovieService(
+            //    new XmlMovieRepository( @"..\..\..\..\..\..\..\02 - Movies.xml"),
+            //    new DefaultTimeProvider(),
+            //    new NullUserContext()
+            //);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Wincubate.RepositoryExamples
             //IEnumerable<Product> query = repository.GetAll().Where(p => p.Category == Category.Book);
 
             // Method 2:
-            IEnumerable<Product> query = repository.GetAll(p => p.Category == Category.Book);
+            IEnumerable<Product> query = repository.Find(p => p.Category == Category.Book);
             foreach (var product in query)
             {
                 Console.WriteLine(product);

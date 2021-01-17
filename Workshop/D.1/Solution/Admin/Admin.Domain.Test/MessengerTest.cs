@@ -1,6 +1,5 @@
 using Admin.Domain.Interfaces;
 using Admin.Domain.Logging;
-using Admin.Domain.Logging.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -9,8 +8,6 @@ using System.Threading.Tasks;
 
 namespace Admin.Domain.Test
 {
-    // No reason to introduce DI container here!
-
     [TestClass]
     public class MessengerTest
     {
@@ -20,7 +17,7 @@ namespace Admin.Domain.Test
             string messageTemplateId = Guid.NewGuid().ToString();
 
             IMessageTemplateRepository repository =
-                new FakeMessageTemplateRepository(
+                new FakeAsyncMessageTemplateRepository(
                     new MessageTemplate
                     {
                         Id = 1,
@@ -41,9 +38,7 @@ namespace Admin.Domain.Test
 
             MessageTransmissionStrategyTestSpy testSpy = new MessageTransmissionStrategyTestSpy();
 
-            ILoggerFactory loggerFactory = new NullLoggerFactory(); 
-
-            Messenger messenger = new Messenger(repository, testSpy,loggerFactory);
+            Messenger messenger = new Messenger(repository, testSpy, new NullLoggerFactory());
 
             User user = new User(
                 name: "Jesper Gulmann Henriksen",
@@ -74,7 +69,7 @@ namespace Admin.Domain.Test
             string messageTemplateKind = "TestKind";
 
             IMessageTemplateRepository repository =
-                new FakeMessageTemplateRepository(
+                new FakeAsyncMessageTemplateRepository(
                     new MessageTemplate
                     {
                         Id = 1,
@@ -87,9 +82,7 @@ namespace Admin.Domain.Test
 
             MessageTransmissionStrategyTestSpy testSpy = new MessageTransmissionStrategyTestSpy();
 
-            ILoggerFactory loggerFactory = new NullLoggerFactory();
-
-            Messenger messenger = new Messenger(repository, testSpy,loggerFactory);
+            Messenger messenger = new Messenger(repository, testSpy, new NullLoggerFactory());
 
             User user = new User(
                 name: "Jesper Gulmann Henriksen",

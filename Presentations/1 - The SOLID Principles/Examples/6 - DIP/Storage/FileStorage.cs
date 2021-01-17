@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace Wincubate.Solid.Module01
 {
@@ -8,17 +9,17 @@ namespace Wincubate.Solid.Module01
         public string SourcePath { get; }
         public string DestinationPath { get; }
 
-        public FileStorage( string sourcePath, string destinationPath )
+        public FileStorage(string sourcePath, string destinationPath)
         {
             SourcePath = sourcePath;
             DestinationPath = destinationPath;
         }
 
-        public string GetDataAsString()
+        public async Task<string> GetDataAsStringAsync()
         {
             try
             {
-                return File.ReadAllText(SourcePath);
+                return await File.ReadAllTextAsync(SourcePath);
             }
             catch (Exception exception)
             {
@@ -27,11 +28,11 @@ namespace Wincubate.Solid.Module01
             }
         }
 
-        public void StoreDataAsString(string outputDataAsString)
+        public async Task StoreDataAsStringAsync(string outputDataAsString)
         {
             try
             {
-                File.WriteAllText(DestinationPath, outputDataAsString);
+                await File.WriteAllTextAsync(DestinationPath, outputDataAsString);
             }
             catch (Exception exception)
             {

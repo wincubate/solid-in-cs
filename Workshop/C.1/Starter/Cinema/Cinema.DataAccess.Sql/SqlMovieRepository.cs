@@ -1,7 +1,7 @@
 using Cinema.Domain.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 
 namespace Cinema.DataAccess.Sql
 {
@@ -14,9 +14,12 @@ namespace Cinema.DataAccess.Sql
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public IQueryable<Movie> GetAll() => _context.Movies;
+        public IEnumerable<Movie> GetAll() => _context.Movies
+            .ToList()
+            ;
 
-        public IQueryable<Movie> GetAll(Expression<Func<Movie, bool>> filter) => _context.Movies
-            .Where(filter);
+        public IEnumerable<Movie> GetAllShowing() => _context.Movies
+            .Where(movie => movie.IsShowing)
+            .ToList();
     }
 }

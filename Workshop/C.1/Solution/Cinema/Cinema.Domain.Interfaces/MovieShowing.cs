@@ -21,6 +21,12 @@ namespace Cinema.Domain.Interfaces
             return ApplyDiscount(happyHourDiscountPercentage);
         }
 
+        public MovieShowing ApplyDiscountFor(IUserContext userContext)
+        {
+            int clubMemberDiscountPercentage = (userContext.IsInRole( UserRole.ClubMember ) ? 10 : 0);
+            return ApplyDiscount(clubMemberDiscountPercentage);
+        }
+
         private MovieShowing ApplyDiscount(int discountPercentage)
         {
             decimal? newTicketPrice = null;

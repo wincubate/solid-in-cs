@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace Wincubate.RepositoryExamples.Data.EF
 {
@@ -9,7 +8,7 @@ namespace Wincubate.RepositoryExamples.Data.EF
 
         protected override void OnConfiguring( DbContextOptionsBuilder optionsBuilder )
         {
-            optionsBuilder.UseSqlServer(@"Server=.\SQLExpress;Database=89076;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=.\SQLExpress;Database=90322;Trusted_Connection=True;");
         }
     }
 }

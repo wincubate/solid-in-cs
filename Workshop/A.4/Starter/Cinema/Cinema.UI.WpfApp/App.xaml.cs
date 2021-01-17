@@ -17,7 +17,7 @@ namespace Cinema.UI.WpfApp
             // Composition Root
             IMovieService service = new MovieService(
                 //new SqlMovieRepository( new MovieContext() )
-                new XmlMovieRepository(@"..\..\..\..\..\..\..\02 - Movies.xml")
+                new XmlMovieRepository(@"..\..\..\..\..\..\02 - Movies.xml")
             );
 
             // UI Layer

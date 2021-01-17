@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Wincubate.RepositoryExamples.Data;
@@ -15,27 +16,41 @@ namespace Wincubate.RepositoryExamples
             _context = context;
         }
 
-        public Product GetById( int id ) => _context.Products
+        public Product GetById(int id) => _context.Products
             .Single(p => p.Id == id);
 
-        public IQueryable<Product> GetAll() => _context.Products;
+        public IEnumerable<Product> GetAll() => _context.Products
+            .ToList()
+            ;
 
-        public IQueryable<Product> GetAll( Expression<Func<Product, bool>> filter ) => _context.Products
-            .Where(filter);
+        public IEnumerable<Product> Find(Expression<Func<Product, bool>> filter) => _context.Products
+            .Where(filter)
+            .ToList()
+            ;
 
-        public void Add( Product product )
+        public void Add(Product product)
         {
-            _context.Products.Add(product ?? throw new ArgumentNullException(nameof(product)));
-            _context.SaveChanges();
+            _context.Products.Add(product);
         }
 
-        public void Remove( Product product )
+        public void AddRange(IEnumerable<Product> products)
         {
-            _context.Products.Remove(product ?? throw new ArgumentNullException(nameof(product)));
-            _context.SaveChanges();
+            _context.Products.AddRange(products);
         }
 
-        public IQueryable<Product> GetAllBooks() => _context.Products
-            .Where(p => p.Category == Category.Book);
+        public void Remove(Product product)
+        {
+            _context.Products.Remove(product);
+        }
+
+        public void RemoveRange(IEnumerable<Product> products)
+        {
+            _context.Products.RemoveRange(products);
+        }
+
+        public IEnumerable<Product> GetForCategory(Category? category) => _context.Products
+            .Where(p => p.Category == category)
+            .ToList()
+            ;
     }
 }

@@ -1,15 +1,16 @@
 using System;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace Wincubate.Solid.Module01
 {
     class FileStorage : IStorage
     {
-        public string GetDataAsString(string sourceFilePath)
+        public async Task<string> GetDataAsStringAsync(string sourceFilePath)
         {
             try
             {
-                return File.ReadAllText(sourceFilePath);
+                return await File.ReadAllTextAsync(sourceFilePath);
             }
             catch (Exception exception)
             {
@@ -18,11 +19,11 @@ namespace Wincubate.Solid.Module01
             }
         }
 
-        public void StoreDataAsString(string destinationFilePath, string outputDataAsString)
+        public async Task StoreDataAsStringAsync(string destinationFilePath, string outputDataAsString)
         {
             try
             {
-                File.WriteAllText(destinationFilePath, outputDataAsString);
+                await File.WriteAllTextAsync(destinationFilePath, outputDataAsString);
             }
             catch (Exception exception)
             {

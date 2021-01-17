@@ -1,22 +1,17 @@
 using Admin.Domain.Interfaces;
-using System;
-using System.Linq;
-using System.Linq.Expressions;
 
 namespace Admin.DataAccess.Sql
 {
-    public class SqlMessageTemplateRepository : IMessageTemplateRepository
+    public class SqlMessageTemplateRepository :
+        SqlRepository<MessageTemplate>,
+        IMessageTemplateRepository
     {
-        private readonly MessageTemplateContext _context;
+        protected MessageTemplateContext MessageTemplateContext => Context as MessageTemplateContext;
 
-        public SqlMessageTemplateRepository(MessageTemplateContext context)
+        public SqlMessageTemplateRepository(MessageTemplateContext context) : base(context)
         {
-            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public IQueryable<MessageTemplate> GetAll() => _context.MessageTemplates;
-
-        public IQueryable<MessageTemplate> GetAll(Expression<Func<MessageTemplate, bool>> filter)
-            => _context.MessageTemplates.Where(filter);
+        // Add methods specific to MessageTemplates here
     }
 }

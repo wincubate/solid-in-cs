@@ -9,7 +9,7 @@ namespace Wincubate.Solid.Module01.DomainLayer
 
         public override string ToString() => $"[{Width}x{Height}]";
 
-        public Rectangle( int width, int height )
+        public Rectangle(int width, int height)
         {
             Width = width;
             Height = height;

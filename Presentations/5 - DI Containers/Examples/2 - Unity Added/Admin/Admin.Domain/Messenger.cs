@@ -23,12 +23,14 @@ namespace Admin.Domain
 
         public async Task SendAsync(Message message)
         {
-            MessageTemplate messageTemplate = _repository
-                .GetAll( mt => mt.Kind == message.MessageTemplateKind && mt.Culture == message.Culture)
-                .SingleOrDefault()
-                ?? throw new AdminException(
-                    message: $"No available message template with id {message.MessageTemplateKind} in culture {message.Culture}",
-                    reason: AdminExceptionReason.Messaging
+            MessageTemplate messageTemplate = await _repository
+                .FindAsync(mt => mt.Kind == message.MessageTemplateKind && mt.Culture == message.Culture)
+                .ContinueWith( t => t.Result
+                    .SingleOrDefault()
+                    ?? throw new AdminException(
+                        message: $"No available message template with id {message.MessageTemplateKind} in culture {message.Culture}",
+                        reason: AdminExceptionReason.Messaging
+                    )
                 )
                 ;
 

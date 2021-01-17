@@ -17,8 +17,7 @@ namespace Cinema.Domain
         public IEnumerable<MovieShowing> GetMoviesShowing()
         {
             var moviesShowing = _repository
-                .GetAll()
-                .Where(movie => movie.IsShowing)
+                .GetAllShowing()
                 .Select( movie => new MovieShowing( movie.Name, movie.Year, movie.TicketPrice))
                 ;
 

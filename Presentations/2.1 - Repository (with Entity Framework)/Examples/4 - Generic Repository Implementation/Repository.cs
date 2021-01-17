@@ -1,38 +1,42 @@
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Wincubate.RepositoryExamples.Data;
 
 namespace Wincubate.RepositoryExamples
 {
-    class Repository<T> : IRepository<T> where T : class, IEntity
+    class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        private readonly DbContext _context;
+        protected DbContext Context { get; }
 
-        public Repository( DbContext context )
+        public Repository(DbContext context)
         {
-            _context = context;
+            Context = context;
         }
 
-        public T GetById( int id ) => _context.Set<T>()
-            .Single(p => p.Id == id);
+        public TEntity GetById(int id) =>
+            Context.Set<TEntity>().Find(id);
 
-        public IQueryable<T> GetAll() => _context.Set<T>();
+        public IEnumerable<TEntity> GetAll() =>
+            Context.Set<TEntity>()
+                .ToList()
+                ;
 
-        public IQueryable<T> GetAll( Expression<Func<T, bool>> filter ) => _context.Set<T>()
-            .Where(filter);
+        public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> filter) =>
+            Context.Set<TEntity>()
+                .Where(filter)
+                ;
 
-        public void Add( T t )
-        {
-            _context.Set<T>().Add(t ?? throw new ArgumentNullException(nameof(t)));
-            _context.SaveChanges();
-        }
+        public void Add(TEntity entity) =>
+           Context.Set<TEntity>().Add(entity);
 
-        public void Remove( T t )
-        {
-            _context.Set<T>().Remove(t ?? throw new ArgumentNullException(nameof(t)));
-            _context.SaveChanges();
-        }
+        public void AddRange(IEnumerable<TEntity> entities) =>
+           Context.Set<TEntity>().AddRange(entities);
+
+        public void Remove(TEntity entity) =>
+            Context.Set<TEntity>().Remove(entity);
+        public void RemoveRange(IEnumerable<TEntity> entities) =>
+           Context.Set<TEntity>().RemoveRange(entities);
     }
 }

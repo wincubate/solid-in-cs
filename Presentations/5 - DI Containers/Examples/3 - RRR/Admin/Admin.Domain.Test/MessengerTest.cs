@@ -16,7 +16,7 @@ namespace Admin.Domain.Test
             string messageTemplateId = Guid.NewGuid().ToString();
 
             IMessageTemplateRepository repository =
-                new FakeMessageTemplateRepository(
+                new FakeAsyncMessageTemplateRepository(
                     new MessageTemplate
                     {
                         Id = 1,
@@ -68,7 +68,7 @@ namespace Admin.Domain.Test
             string messageTemplateKind = "TestKind";
 
             IMessageTemplateRepository repository =
-                new FakeMessageTemplateRepository(
+                new FakeAsyncMessageTemplateRepository(
                     new MessageTemplate
                     {
                         Id = 1,

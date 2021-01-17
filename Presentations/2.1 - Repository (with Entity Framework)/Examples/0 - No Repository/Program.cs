@@ -12,8 +12,8 @@ namespace Wincubate.RepositoryExamples
             using (ProductsContext context = new ProductsContext())
             {
                 var query = context
-                        .Products
-                        .Where(p => p.Category == Category.Book);
+                    .Products
+                    .Where(p => p.Category == Category.Book);
 
                 foreach (var product in query)
                 {

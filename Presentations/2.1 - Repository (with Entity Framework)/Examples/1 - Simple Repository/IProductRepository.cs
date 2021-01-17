@@ -5,9 +5,9 @@ namespace Wincubate.RepositoryExamples
 {
     interface IProductRepository
     {
-        Product GetById( int id );
+        Product GetById(int id);
         IEnumerable<Product> GetAll();
-        IEnumerable<Product> GetAllBooks();
+        IEnumerable<Product> GetForCategory(Category? category);
 
         // Not needed (yet?) :
         //

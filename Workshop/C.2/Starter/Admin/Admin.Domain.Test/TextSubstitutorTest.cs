@@ -6,8 +6,6 @@ using System.Collections.Generic;
 
 namespace Cinema.Domain.Messaging.Test
 {
-    // No reason to introduce DI container here!
-
     [TestClass]
     public class TextSubstitutorTest
     {

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Wincubate.Solid.Module01.DomainLayer;
 
 namespace Wincubate.Solid.Module01
@@ -22,9 +23,9 @@ namespace Wincubate.Solid.Module01
             _serializer = new JsonSerializer();
         }
 
-        public void Process()
+        public async Task ProcessAsync()
         {
-            string inputDataAsString = _readStorage.GetDataAsString();
+            string inputDataAsString = await _readStorage.GetDataAsStringAsync();
             IEnumerable<StockPosition> stockPositions = _parser.Parse(inputDataAsString);
 
             Computation computation = new Computation();
@@ -32,7 +33,7 @@ namespace Wincubate.Solid.Module01
 
             string outputDataAsString = _serializer.SerializeData(output);
 
-            _writeStorage.StoreDataAsString(outputDataAsString);
+            await _writeStorage.StoreDataAsStringAsync(outputDataAsString);
         }
     }
 }

@@ -180,11 +180,11 @@
     <Reference Include="Twilio, Version=5.32.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Twilio.5.32.0\lib\net451\Twilio.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Abstractions, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.11.1\lib\net47\Unity.Abstractions.dll</HintPath>
+    <Reference Include="Unity.Abstractions, Version=5.11.6.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.9\lib\net47\Unity.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Container, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.11.1\lib\net47\Unity.Container.dll</HintPath>
+    <Reference Include="Unity.Container, Version=5.11.10.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.9\lib\net47\Unity.Container.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -254,7 +254,7 @@
       <Name>Admin.Domain.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\Admin.Domain.Logging\Admin.Domain.Logging.csproj">
-      <Project>{98889B8C-E945-4CEC-A637-20439B966BAE}</Project>
+      <Project>{894b1e1f-2317-46e8-83b9-42572b76c627}</Project>
       <Name>Admin.Domain.Logging</Name>
     </ProjectReference>
     <ProjectReference Include="..\Admin.Domain.Sms\Admin.Domain.Sms.csproj">

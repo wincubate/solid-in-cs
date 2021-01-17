@@ -1,5 +1,4 @@
 using Admin.Domain.Interfaces;
-using Admin.Domain.Logging.Interfaces;
 using System;
 using System.Threading.Tasks;
 
@@ -9,9 +8,9 @@ namespace Admin.Domain
     {
         private readonly Messenger _messenger;
 
-        public CreateUserService(Messenger messenger)
+        public CreateUserService( Messenger messenger )
         {
-            _messenger = messenger ?? throw new ArgumentNullException(nameof(messenger));
+            _messenger = messenger ?? throw new ArgumentNullException( nameof( messenger ));
         }
 
         public async Task CreateUserAsync(User user)

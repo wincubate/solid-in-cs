@@ -8,7 +8,7 @@ namespace Wincubate.Solid.Module01
         {
         }
 
-        public void ModifyTicker( string newTicker )
+        public void ModifyTicker(string newTicker)
         {
             Ticker = newTicker;
         }

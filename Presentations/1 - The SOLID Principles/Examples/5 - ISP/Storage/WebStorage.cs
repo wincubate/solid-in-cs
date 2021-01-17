@@ -1,5 +1,6 @@
 using System;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace Wincubate.Solid.Module01
 {
@@ -7,18 +8,18 @@ namespace Wincubate.Solid.Module01
     {
         public string Url { get; }
 
-        public WebStorage( string url )
+        public WebStorage(string url)
         {
             Url = url;
         }
 
-        public string GetDataAsString()
+        public Task<string> GetDataAsStringAsync()
         {
             try
             {
                 using (WebClient client = new WebClient())
                 {
-                    return client.DownloadString(Url);
+                    return client.DownloadStringTaskAsync(Url);
                 }
             }
             catch (Exception exception)

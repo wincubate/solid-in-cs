@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 
 namespace Admin.Domain.Test.Integration
 {
-    // No reason to introduce DI container here!
-
     [TestClass]
     [TestCategory("Integration")]
     public class TransmissionTest

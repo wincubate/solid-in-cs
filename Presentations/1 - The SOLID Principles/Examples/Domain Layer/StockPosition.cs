@@ -7,7 +7,7 @@ namespace Wincubate.Solid.Module01.DomainLayer
 
         public override string ToString() => $"{Ticker} [{Size}]";
 
-        public StockPosition( string ticker, int size )
+        public StockPosition(string ticker, int size)
         {
             Ticker = ticker;
             Size = size;

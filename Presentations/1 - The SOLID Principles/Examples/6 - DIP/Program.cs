@@ -1,8 +1,10 @@
+using System.Threading.Tasks;
+
 namespace Wincubate.Solid.Module01
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             //string sourceFilePath = @"..\..\..\..\Files\StockPositions1.csv";
             //string sourceFilePath = @"..\..\..\..\Files\StockPositions2.json";
@@ -20,9 +22,9 @@ namespace Wincubate.Solid.Module01
             ISerializer serializer = new JsonSerializer();
 
             StockAnalyzer analyzer = new StockAnalyzer(
-                readStorage, writeStorage, parser, serializer    
+                readStorage, writeStorage, parser, serializer
             );
-            analyzer.Process();
+            await analyzer.ProcessAsync();
         }
     }
 }

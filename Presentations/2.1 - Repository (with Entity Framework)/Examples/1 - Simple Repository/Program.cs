@@ -16,7 +16,7 @@ namespace Wincubate.RepositoryExamples
             //    new Product { Id = 2, Name = "Necronomicon Ex Mortis", Manufacturer = "Deadite Press", Category = Category.Book }
             //);
 
-            IEnumerable<Product> query = repository.GetAllBooks();
+            IEnumerable<Product> query = repository.GetForCategory(Category.Book);
             foreach (var product in query)
             {
                 Console.WriteLine(product);

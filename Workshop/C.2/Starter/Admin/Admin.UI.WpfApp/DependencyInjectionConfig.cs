@@ -1,7 +1,7 @@
 using Admin.DataAccess.Sql;
 using Admin.Domain;
-using Admin.Domain.Email;
 using Admin.Domain.Interfaces;
+using Admin.Domain.Sms;
 using Admin.UI.WpfApp.ViewModels;
 using System;
 using Unity;
@@ -10,7 +10,7 @@ namespace Admin.UI.WpfApp
 {
     internal class DependencyInjectionConfig : IDisposable
     {
-        private readonly IUnityContainer _container;
+        private IUnityContainer _container;
 
         public DependencyInjectionConfig()
         {
@@ -21,14 +21,19 @@ namespace Admin.UI.WpfApp
         {
             _container
                 .RegisterType<ICreateUserService, CreateUserService>()
+                .RegisterType<Messenger>()
                 .RegisterType<IMessageTemplateRepository, SqlMessageTemplateRepository>()
                 .RegisterType<MessageTemplateContext>()
-                .RegisterType<IMessageTransmissionStrategy, SendGridEmailTransmissionStrategy>()
+                .RegisterType<IMessageTransmissionStrategy, TwilioSmsTransmissionStrategy>()
                 .RegisterType<CreateUserViewModel>()
+                .RegisterType<CreateUserWindow>()
                 ;
         }
 
-        public T Resolve<T>() => _container.Resolve<T>();
+        public T Resolve<T>()
+        {
+            return _container.Resolve<T>();
+        }
 
         public void Dispose()
         {

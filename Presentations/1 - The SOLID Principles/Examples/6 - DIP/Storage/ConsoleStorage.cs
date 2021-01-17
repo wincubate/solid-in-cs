@@ -1,17 +1,20 @@
 using System;
+using System.Threading.Tasks;
 
 namespace Wincubate.Solid.Module01
 {
     class ConsoleStorage : IStorage
     {
-        public string GetDataAsString()
+        public Task<string> GetDataAsStringAsync()
         {
-            return Console.ReadLine();
+            string s = Console.ReadLine();
+            return Task.FromResult(s);
         }
 
-        public void StoreDataAsString(string outputDataAsString)
+        public Task StoreDataAsStringAsync(string outputDataAsString)
         {
-            Console.WriteLine( outputDataAsString );
+            Console.WriteLine(outputDataAsString);
+            return Task.CompletedTask;
         }
     }
 }

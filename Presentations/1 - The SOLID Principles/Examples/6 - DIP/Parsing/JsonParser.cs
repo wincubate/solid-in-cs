@@ -13,7 +13,7 @@ namespace Wincubate.Solid.Module01
             {
                 return JsonConvert.DeserializeObject<IEnumerable<StockPosition>>(dataAsString);
             }
-            catch( Exception exception )
+            catch (Exception exception)
             {
                 string message = $"Could not parse as JSON: \"{dataAsString}\"";
                 throw new StockFormatException(message, exception);

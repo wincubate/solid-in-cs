@@ -1,17 +1,20 @@
 using System.IO;
+using System.Threading.Tasks;
 
 namespace Wincubate.Solid.Module01
 {
     class FileStorage : IStorage
     {
-        public string GetDataAsString(string sourceFilePath)
+        public Task<string> GetDataAsStringAsync(string sourceFilePath)
         {
-            return File.ReadAllText(sourceFilePath);
+            return File.ReadAllTextAsync(sourceFilePath);
         }
 
-        public void StoreDataAsString(string destinationFilePath, string outputDataAsString)
+        public Task StoreDataAsStringAsync(
+            string destinationFilePath,
+            string outputDataAsString)
         {
-            File.WriteAllText(destinationFilePath, outputDataAsString);
+            return File.WriteAllTextAsync(destinationFilePath, outputDataAsString);
         }
     }
 }

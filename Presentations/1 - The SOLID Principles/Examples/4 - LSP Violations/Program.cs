@@ -14,7 +14,7 @@ namespace Wincubate.Solid.Module01
             //pos.ModifyTicker( "MSFT" );
             //Console.WriteLine( pos );
 
-            //Car car = new ToyotaPrius(); // new Car();
+            //Car car = new FordKuga(); // new Car();
             //car.TurnIgnitionKey();
             //Console.WriteLine( car.IsEngineRunning );
         }

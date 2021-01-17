@@ -17,23 +17,21 @@ namespace Wincubate.RepositoryExamples
         public IEnumerable<Product> GetAll() => _context.Products
             .ToList();
 
-        public IEnumerable<Product> GetAllBooks() => _context.Products
-            .Where(p => p.Category == Category.Book)
+        public IEnumerable<Product> GetForCategory(Category? category) => _context.Products
+            .Where(p => p.Category == category)
             .ToList();
 
-        public Product GetById( int id ) => _context.Products
+        public Product GetById(int id) => _context.Products
             .Single(p => p.Id == id);
 
         //public void Add( Product product )
         //{
         //    _context.Products.Add(product ?? throw new ArgumentNullException(nameof(product)));
-        //    _context.SaveChanges();
         //}
 
         //public void Remove( Product product )
         //{
         //    _context.Products.Remove(product ?? throw new ArgumentNullException(nameof(product)));
-        //    _context.SaveChanges();
         //}
     }
 }

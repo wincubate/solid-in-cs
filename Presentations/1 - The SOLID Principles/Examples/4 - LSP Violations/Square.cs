@@ -6,7 +6,7 @@ namespace Wincubate.Solid.Module01
     // Strengthened precondition: Width == Height
     class Square : Rectangle
     {
-        public Square( int size ) : base( size, size )
+        public Square(int size) : base(size, size)
         {
         }
     }
