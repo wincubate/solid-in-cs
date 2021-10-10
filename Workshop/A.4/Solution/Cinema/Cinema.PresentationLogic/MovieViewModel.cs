@@ -4,7 +4,6 @@ namespace Cinema.PresentationLogic
 {
     public class MovieViewModel
     {
-        public string Name { get; }
         public string DisplayText { get; }
 
         public MovieViewModel(MovieShowing movie)
