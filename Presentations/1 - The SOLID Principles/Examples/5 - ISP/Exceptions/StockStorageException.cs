@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace Wincubate.Solid.Module01
+namespace Wincubate.Solid
 {
     [Serializable]
     public class StockStorageException : StockException

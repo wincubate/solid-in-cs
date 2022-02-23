@@ -1,19 +1,19 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Wincubate.Solid.Module01.DomainLayer;
+using Wincubate.Solid.DomainLayer;
 
-namespace Wincubate.Solid.Module01
+namespace Wincubate.Solid
 {
     class StockAnalyzer
     {
         private readonly FileStorage _storage;
-        private readonly Parser _parser;
+        private readonly CsvParser _parser;
         private readonly CsvSerializer _serializer;
 
         public StockAnalyzer()
         {
             _storage = new FileStorage();
-            _parser = new Parser();
+            _parser = new CsvParser();
             _serializer = new CsvSerializer();
         }
 

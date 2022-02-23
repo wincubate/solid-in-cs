@@ -2,7 +2,7 @@ using System;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace Wincubate.Solid.Module01
+namespace Wincubate.Solid
 {
     class WebStorage : IReadStorage
     {
@@ -13,13 +13,13 @@ namespace Wincubate.Solid.Module01
             Url = url;
         }
 
-        public Task<string> GetDataAsStringAsync()
+        public async Task<string> GetDataAsStringAsync()
         {
             try
             {
                 using (WebClient client = new WebClient())
                 {
-                    return client.DownloadStringTaskAsync(Url);
+                    return await client.DownloadStringTaskAsync(Url);
                 }
             }
             catch (Exception exception)

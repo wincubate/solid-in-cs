@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace Wincubate.Solid.Module01
+namespace Wincubate.Solid
 {
     class Program
     {
@@ -18,7 +18,7 @@ namespace Wincubate.Solid.Module01
 
             IReadStorage readStorage = new WebStorage(@"http://solid.wincubate.net/stockpositions.json");
             IWriteStorage writeStorage = new ConsoleStorage();
-            Parser parser = new JsonParser();
+            IParser parser = new JsonParser();
             ISerializer serializer = new JsonSerializer();
 
             StockAnalyzer analyzer = new StockAnalyzer(

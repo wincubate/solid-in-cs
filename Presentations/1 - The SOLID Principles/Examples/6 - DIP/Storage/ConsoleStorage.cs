@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace Wincubate.Solid.Module01
+namespace Wincubate.Solid
 {
     class ConsoleStorage : IStorage
     {

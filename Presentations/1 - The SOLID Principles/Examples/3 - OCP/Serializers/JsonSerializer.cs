@@ -1,8 +1,8 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using Wincubate.Solid.Module01.DomainLayer;
+using Wincubate.Solid.DomainLayer;
 
-namespace Wincubate.Solid.Module01
+namespace Wincubate.Solid
 {
     class JsonSerializer : ISerializer
     {

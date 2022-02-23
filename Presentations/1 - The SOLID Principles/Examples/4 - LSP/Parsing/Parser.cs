@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Wincubate.Solid.Module01.DomainLayer;
+using Wincubate.Solid.DomainLayer;
 
-namespace Wincubate.Solid.Module01
+namespace Wincubate.Solid
 {
-    class Parser
+    class Parser : IParser
     {
-        public virtual IEnumerable<StockPosition> Parse(string dataAsString)
+        public IEnumerable<StockPosition> Parse(string dataAsString)
         {
             try
             {

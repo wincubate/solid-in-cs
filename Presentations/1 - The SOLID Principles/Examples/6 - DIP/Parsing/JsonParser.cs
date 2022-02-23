@@ -1,13 +1,13 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using Wincubate.Solid.Module01.DomainLayer;
+using Wincubate.Solid.DomainLayer;
 
-namespace Wincubate.Solid.Module01
+namespace Wincubate.Solid
 {
-    class JsonParser : Parser
+    class JsonParser : IParser
     {
-        public override IEnumerable<StockPosition> Parse(string dataAsString)
+        public IEnumerable<StockPosition> Parse(string dataAsString)
         {
             try
             {

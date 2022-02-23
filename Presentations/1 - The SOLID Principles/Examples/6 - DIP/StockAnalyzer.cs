@@ -1,20 +1,20 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Wincubate.Solid.Module01.DomainLayer;
+using Wincubate.Solid.DomainLayer;
 
-namespace Wincubate.Solid.Module01
+namespace Wincubate.Solid
 {
     class StockAnalyzer
     {
         private readonly IReadStorage _readStorage;
         private readonly IWriteStorage _writeStorage;
-        private readonly Parser _parser;
+        private readonly IParser _parser;
         private readonly ISerializer _serializer;
 
         public StockAnalyzer(
             IReadStorage readStorage,
             IWriteStorage writeStorage,
-            Parser parser,
+            IParser parser,
             ISerializer serializer
         )
         {

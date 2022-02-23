@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Wincubate.Solid.Module01.DomainLayer;
+using Wincubate.Solid.DomainLayer;
 
-namespace Wincubate.Solid.Module01
+namespace Wincubate.Solid
 {
     class StockAnalyzer
     {
         private readonly IReadStorage _readStorage;
         private readonly IWriteStorage _writeStorage;
-        private readonly Parser _parser;
+        private readonly IParser _parser;
         private readonly ISerializer _serializer;
 
         public StockAnalyzer()
@@ -17,7 +17,7 @@ namespace Wincubate.Solid.Module01
             //_writeStorage = new FileStorage( @"..\..\..\..\Files\StockPositions1.csv",@"..\..\..\..\Files\Result.json" );
             _writeStorage = new ConsoleStorage();
             //_storage = new FileStorage();
-            //_parser = new Parser();
+            //_parser = new CsvParser();
             _parser = new JsonParser();
             //_serializer = new CsvSerializer();
             _serializer = new JsonSerializer();

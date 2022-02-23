@@ -1,6 +1,6 @@
-using Wincubate.Solid.Module01.DomainLayer;
+using Wincubate.Solid.DomainLayer;
 
-namespace Wincubate.Solid.Module01
+namespace Wincubate.Solid
 {
     // Violates LSP Contract Rule:
     // Strengthened precondition: Width == Height

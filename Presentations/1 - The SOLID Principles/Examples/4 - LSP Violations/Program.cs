@@ -1,6 +1,6 @@
 using System;
 
-namespace Wincubate.Solid.Module01
+namespace Wincubate.Solid
 {
     class Program
     {
@@ -10,13 +10,13 @@ namespace Wincubate.Solid.Module01
             //rectangle.Height = 5;
             //Console.WriteLine( rectangle );
 
+            //Car car = new ElectricCar(); // new Car();
+            //car.TurnIgnitionKey();
+            //Console.WriteLine( car.IsEngineRunning );
+
             //ModifiableStockPosition pos = new ModifiableStockPosition( "WCB", 42 );
             //pos.ModifyTicker( "MSFT" );
             //Console.WriteLine( pos );
-
-            //Car car = new FordKuga(); // new Car();
-            //car.TurnIgnitionKey();
-            //Console.WriteLine( car.IsEngineRunning );
         }
     }
 }
