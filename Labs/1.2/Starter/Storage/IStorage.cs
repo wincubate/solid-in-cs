@@ -1,4 +1,4 @@
-﻿namespace Wincubate.Solid
+namespace Wincubate.Solid
 {
     interface IStorage : IReadStorage, IWriteStorage
     {
