@@ -1,7 +1,6 @@
-namespace Wincubate.NullObjectExamples
+namespace Wincubate.NullObjectExamples;
+
+interface IAnimalFactory
 {
-    interface IAnimalFactory
-    {
-        IAnimal Create( string description );
-    }
+    IAnimal Create( string description );
 }

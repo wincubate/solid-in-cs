@@ -2,19 +2,18 @@ using System.Collections.Generic;
 using System.Linq;
 using Wincubate.RepositoryExamples.Data;
 
-namespace Wincubate.RepositoryExamples
+namespace Wincubate.RepositoryExamples;
+
+class InMemoryProductRepository : InMemoryRepository<Product>, IProductRepository
 {
-    class InMemoryProductRepository : InMemoryRepository<Product>, IProductRepository
+    public InMemoryProductRepository(params Product[] entities) : base(entities)
     {
-        public InMemoryProductRepository(params Product[] entities) : base(entities)
-        {
-        }
-
-        public IEnumerable<Product> GetForCategory(Category? category) =>
-            _elements
-                .Where(product => product.Category == category)
-                .ToList()
-                ;
-
     }
+
+    public IEnumerable<Product> GetForCategory(Category? category) =>
+        _elements
+            .Where(product => product.Category == category)
+            .ToList()
+            ;
+
 }

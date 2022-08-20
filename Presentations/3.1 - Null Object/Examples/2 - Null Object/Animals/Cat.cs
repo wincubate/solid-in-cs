@@ -1,14 +1,13 @@
 using System;
 
-namespace Wincubate.NullObjectExamples
-{
-    class Cat : AnimalBase
-    {
-        public Cat() : base( "Kitty") { }
+namespace Wincubate.NullObjectExamples;
 
-        override public void MakeSound()
-        {
-            Console.WriteLine( "Miiiaaauuuw" );
-        }
+class Cat : AnimalBase
+{
+    public Cat() : base( "Kitty") { }
+
+    override public void MakeSound()
+    {
+        Console.WriteLine( "Miiiaaauuuw" );
     }
 }

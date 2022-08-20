@@ -1,4 +1,4 @@
-namespace Wincubate.Solid.DomainLayer
+namespace Wincubate.Module1.DomainLayer
 {
     // Invariant: When TurnIgnitionKey() has been invoked, IsEngineRunning is true
     public class Car

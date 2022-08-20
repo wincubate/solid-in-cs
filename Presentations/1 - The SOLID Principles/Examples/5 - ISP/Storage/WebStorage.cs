@@ -1,8 +1,8 @@
 using System;
-using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace Wincubate.Solid
+namespace Wincubate.Module1
 {
     class WebStorage : IReadStorage
     {
@@ -17,9 +17,9 @@ namespace Wincubate.Solid
         {
             try
             {
-                using (WebClient client = new WebClient())
+                using (HttpClient client = new HttpClient())
                 {
-                    return await client.DownloadStringTaskAsync(Url);
+                    return await client.GetStringAsync(Url);
                 }
             }
             catch (Exception exception)

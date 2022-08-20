@@ -1,9 +1,10 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using Wincubate.Solid.DomainLayer;
+using Wincubate.Module1.DomainLayer;
+using System.Linq;
 
-namespace Wincubate.Solid
+namespace Wincubate.Module1
 {
     class JsonParser : IParser
     {
@@ -11,7 +12,8 @@ namespace Wincubate.Solid
         {
             try
             {
-                return JsonConvert.DeserializeObject<IEnumerable<StockPosition>>(dataAsString);
+                return JsonConvert.DeserializeObject<IEnumerable<StockPosition>>(dataAsString)
+                    ?? Enumerable.Empty<StockPosition>();
             }
             catch (Exception exception)
             {

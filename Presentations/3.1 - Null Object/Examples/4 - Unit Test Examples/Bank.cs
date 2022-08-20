@@ -1,35 +1,34 @@
 using System;
 using Wincubate.NullObjectExamples.Logging;
 
-namespace Wincubate.NullObjectExamples
+namespace Wincubate.NullObjectExamples;
+
+public class Bank
 {
-    public class Bank
+    private readonly ILoggerFactory _loggerFactory;
+
+    public Bank( ILoggerFactory loggerFactory )
     {
-        private readonly ILoggerFactory _loggerFactory;
+        _loggerFactory = loggerFactory;
+    }
 
-        public Bank( ILoggerFactory loggerFactory )
+    public void Transfer( BankAccount from, decimal amount, BankAccount to )
+    {
+        ILogger logger = _loggerFactory.Create(nameof(Bank));
+        logger.Enter();
+
+        try
         {
-            _loggerFactory = loggerFactory;
+            from.Withdraw(amount);
+            to.Deposit(amount);
+
+            logger.Info($"Successfully transferred {amount}");
+        }
+        catch (Exception exception)
+        {
+            logger.Error(exception);
         }
 
-        public void Transfer( BankAccount from, decimal amount, BankAccount to )
-        {
-            ILogger logger = _loggerFactory.Create(nameof(Bank));
-            logger.Enter();
-
-            try
-            {
-                from.Withdraw(amount);
-                to.Deposit(amount);
-
-                logger.Info($"Successfully transferred {amount}");
-            }
-            catch (Exception exception)
-            {
-                logger.Error(exception);
-            }
-
-            logger.Exit();
-        }
+        logger.Exit();
     }
 }

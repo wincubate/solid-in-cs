@@ -1,6 +1,6 @@
 using System;
 
-namespace Wincubate.Solid.DomainLayer
+namespace Wincubate.Module1.DomainLayer
 {
     public class Rectangle
     {

@@ -1,9 +1,8 @@
-namespace Wincubate.NullObjectExamples
-{
-    class NullAnimal : AnimalBase
-    {
-        public NullAnimal() : base( string.Empty ) { }
+namespace Wincubate.NullObjectExamples;
 
-        public override void MakeSound() { }
-    }
+class NullAnimal : AnimalBase
+{
+    public NullAnimal() : base( string.Empty ) { }
+
+    public override void MakeSound() { }
 }

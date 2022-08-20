@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Wincubate.Solid.DomainLayer;
+using Wincubate.Module1.DomainLayer;
 
-namespace Wincubate.Solid
+namespace Wincubate.Module1
 {
-    class Parser : IParser
+    class CsvParser : IParser
     {
         public IEnumerable<StockPosition> Parse(string dataAsString)
         {
@@ -13,7 +13,7 @@ namespace Wincubate.Solid
             {
                 return dataAsString
                     .Split('\n', '\r', '\t')
-                    .Where(s => string.IsNullOrWhiteSpace(s) == false)
+                    .Where(s => !string.IsNullOrWhiteSpace(s))
                     .Select(line => line.Split(','))
                     .Select(parts => new StockPosition(
                         parts[0],

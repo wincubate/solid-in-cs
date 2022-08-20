@@ -1,4 +1,4 @@
-namespace Wincubate.Solid.DomainLayer
+namespace Wincubate.Module1.DomainLayer
 {
     public class StockPosition
     {

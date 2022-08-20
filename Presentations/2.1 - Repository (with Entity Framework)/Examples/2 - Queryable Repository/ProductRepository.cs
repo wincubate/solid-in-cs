@@ -4,33 +4,32 @@ using System.Linq.Expressions;
 using Wincubate.RepositoryExamples.Data;
 using Wincubate.RepositoryExamples.Data.EF;
 
-namespace Wincubate.RepositoryExamples
+namespace Wincubate.RepositoryExamples;
+
+class ProductRepository : IProductRepository
 {
-    class ProductRepository : IProductRepository
+    private readonly ProductsContext _context;
+
+    public ProductRepository(ProductsContext context)
     {
-        private readonly ProductsContext _context;
+        _context = context;
+    }
 
-        public ProductRepository(ProductsContext context)
-        {
-            _context = context;
-        }
+    public Product GetById( int id ) => _context.Products
+        .Single(p => p.Id == id);
 
-        public Product GetById( int id ) => _context.Products
-            .Single(p => p.Id == id);
+    public IQueryable<Product> GetAll() => _context.Products;
 
-        public IQueryable<Product> GetAll() => _context.Products;
+    public IQueryable<Product> Find( Expression<Func<Product, bool>> filter ) => _context.Products
+        .Where(filter);
 
-        public IQueryable<Product> Find( Expression<Func<Product, bool>> filter ) => _context.Products
-            .Where(filter);
+    public void Add( Product product )
+    {
+        _context.Products.Add(product ?? throw new ArgumentNullException(nameof(product)));
+    }
 
-        public void Add( Product product )
-        {
-            _context.Products.Add(product ?? throw new ArgumentNullException(nameof(product)));
-        }
-
-        public void Remove( Product product )
-        {
-            _context.Products.Remove(product ?? throw new ArgumentNullException(nameof(product)));
-        }
+    public void Remove( Product product )
+    {
+        _context.Products.Remove(product ?? throw new ArgumentNullException(nameof(product)));
     }
 }

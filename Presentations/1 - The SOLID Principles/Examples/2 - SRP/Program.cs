@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
 
-namespace Wincubate.Solid
+namespace Wincubate.Module1
 {
-    class Program
+    static class Program
     {
         static async Task Main(string[] args)
         {

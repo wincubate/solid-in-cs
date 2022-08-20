@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace Wincubate.Solid
+namespace Wincubate.Module1
 {
     interface IStorage
     {

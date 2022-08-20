@@ -1,14 +1,12 @@
 using System.Threading.Tasks;
 
-namespace Wincubate.Solid
+namespace Wincubate.Module1
 {
-    class Program
+    static class Program
     {
         static async Task Main(string[] args)
         {
-            //string sourceFilePath = @"..\..\..\..\Files\StockPositions1.csv";
             string sourceFilePath = @"..\..\..\..\Files\StockPositions2.json";
-            //string destinationFilePath = @"..\..\..\..\Files\Result.csv";
             string destinationFilePath = @"..\..\..\..\Files\Result.json";
 
             StockAnalyzer analyzer = new StockAnalyzer();

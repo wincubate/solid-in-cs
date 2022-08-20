@@ -1,14 +1,14 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace Wincubate.Solid
+namespace Wincubate.Module1
 {
     [Serializable]
-    public class StockException : Exception, ISerializable
+    public class StockException : Exception
     {
         public StockException(
-            string message = null,
-            Exception inner = null
+            string? message = null,
+            Exception? inner = null
         )
             : base(message, inner)
         {

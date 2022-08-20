@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace Wincubate.Solid
+namespace Wincubate.Module1
 {
     class FileStorage : IStorage
     {

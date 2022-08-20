@@ -3,14 +3,13 @@ using System.Linq;
 using System.Linq.Expressions;
 using Wincubate.RepositoryExamples.Data;
 
-namespace Wincubate.RepositoryExamples
+namespace Wincubate.RepositoryExamples;
+
+interface IProductRepository
 {
-    interface IProductRepository
-    {
-        Product GetById( int id );
-        IQueryable<Product> GetAll();
-        IQueryable<Product> Find( Expression<Func<Product, bool>> filter );
-        void Add( Product product );
-        void Remove( Product product );
-    }
+    Product GetById( int id );
+    IQueryable<Product> GetAll();
+    IQueryable<Product> Find( Expression<Func<Product, bool>> filter );
+    void Add( Product product );
+    void Remove( Product product );
 }

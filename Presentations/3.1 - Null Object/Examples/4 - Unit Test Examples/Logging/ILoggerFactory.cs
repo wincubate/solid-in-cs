@@ -1,7 +1,6 @@
-namespace Wincubate.NullObjectExamples.Logging
+namespace Wincubate.NullObjectExamples.Logging;
+
+public interface ILoggerFactory
 {
-    public interface ILoggerFactory
-    {
-        ILogger Create( string name );
-    }
+    ILogger Create( string name );
 }

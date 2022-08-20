@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Wincubate.Solid.DomainLayer;
+using Wincubate.Module1.DomainLayer;
 
-namespace Wincubate.Solid
+namespace Wincubate.Module1
 {
     interface ISerializer
     {

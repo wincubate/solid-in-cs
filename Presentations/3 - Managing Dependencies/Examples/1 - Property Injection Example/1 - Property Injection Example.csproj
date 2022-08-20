@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>Wincubate.Module3.ManagingDependencies</RootNamespace>
     <AssemblyName>Wincubate.Module3.ManagingDependencies</AssemblyName>
   </PropertyGroup>

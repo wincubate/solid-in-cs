@@ -1,8 +1,8 @@
 using System;
 
-namespace Wincubate.Solid
+namespace Wincubate.Module1
 {
-    class Program
+    static class Program
     {
         static void Main(string[] args)
         {

@@ -22,7 +22,7 @@ namespace Admin.DataAccess.Sql
         /// <param name="optionsBuilder">Options builder for configuration Entity Framework with your choices.</param>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(LocalDB)\MSSQLLocalDB;Database=90322;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=.\SQLExpress;Database=90322;Trusted_Connection=True;");
         }
     }
 }

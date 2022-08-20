@@ -1,9 +1,11 @@
 using System.Threading.Tasks;
 
-namespace Wincubate.Solid
+namespace Wincubate.Module1
 {
-    class Program
+    static class Program
     {
+        private const string Url = @"http://solid.wincubate.net/stockpositions.json";
+
         static async Task Main(string[] args)
         {
             //string sourceFilePath = @"..\..\..\..\Files\StockPositions1.csv";
@@ -16,13 +18,11 @@ namespace Wincubate.Solid
             //_parser = new Parser();
             //_serializer = new CsvSerializer();
 
-            IReadStorage readStorage = new WebStorage(@"http://solid.wincubate.net/stockpositions.json");
-            IWriteStorage writeStorage = new ConsoleStorage();
-            IParser parser = new JsonParser();
-            ISerializer serializer = new JsonSerializer();
-
             StockAnalyzer analyzer = new StockAnalyzer(
-                readStorage, writeStorage, parser, serializer
+                new WebStorage(Url),
+                new ConsoleStorage(),
+                new JsonParser(),
+                new JsonSerializer()
             );
             await analyzer.ProcessAsync();
         }

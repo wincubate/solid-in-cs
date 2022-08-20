@@ -1,9 +1,8 @@
-namespace Wincubate.NullObjectExamples
-{
-    interface IAnimal
-    {
-        string Name { get; }
+namespace Wincubate.NullObjectExamples;
 
-        void MakeSound();
-    }
+interface IAnimal
+{
+    string Name { get; }
+
+    void MakeSound();
 }
