@@ -15,7 +15,7 @@ namespace Admin.Domain
         public User Recipient { get; set; }
 
         /// <summary>
-        /// Gets or sets the Id of the <see cref="MessageTemplate"/> to use.
+        /// Gets or sets the kind of the <see cref="MessageTemplate"/> to use.
         /// </summary>
         public string MessageTemplateKind { get; set; }
 
