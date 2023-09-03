@@ -13,7 +13,7 @@ namespace Wincubate.Module1
 
         public StockAnalyzer()
         {
-            _readStorage = new WebStorage(@"http://solid.wincubate.net/stockpositions.json");
+            _readStorage = new WebStorage(@"https://www.dotnet.coach/stockpositions.json");
             //_writeStorage = new FileStorage( @"..\..\..\..\Files\StockPositions1.csv",@"..\..\..\..\Files\Result.json" );
             _writeStorage = new ConsoleStorage();
             //_storage = new FileStorage();
