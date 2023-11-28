@@ -6,6 +6,7 @@
     <RootNamespace>Wincubate.Module1</RootNamespace>
     <AssemblyName>Wincubate.Module1</AssemblyName>
     <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -23,7 +24,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Domain Layer\Domain Layer.csproj" />
+    <ProjectReference Include="..\Domain Objects\Domain Objects.csproj" />
   </ItemGroup>
 
 </Project>

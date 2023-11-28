@@ -1,20 +1,10 @@
-using System.Threading.Tasks;
+//string sourceFilePath = @"..\..\..\..\Files\StockPositions1.csv";
+//string sourceFilePath = @"..\..\..\..\Files\StockPositions2.json";
+//string sourceFilePath = @"https://www.dotnet.coach/stockpositions.json";
+//string destinationFilePath = @"..\..\..\..\Files\Result.csv";
+//string destinationFilePath = @"..\..\..\..\Files\Result.json";
 
-namespace Wincubate.Module1
-{
-    static class Program
-    {
-        static async Task Main(string[] args)
-        {
+using Wincubate.Module1;
 
-            //string sourceFilePath = @"..\..\..\..\Files\StockPositions1.csv";
-            //string sourceFilePath = @"..\..\..\..\Files\StockPositions2.json";
-            //string sourceFilePath = @"https://www.dotnet.coach/stockpositions.json";
-            //string destinationFilePath = @"..\..\..\..\Files\Result.csv";
-            //string destinationFilePath = @"..\..\..\..\Files\Result.json";
-
-            StockAnalyzer analyzer = new StockAnalyzer();
-            await analyzer.ProcessAsync();
-        }
-    }
-}
+StockAnalyzer analyzer = new();
+await analyzer.ProcessAsync();

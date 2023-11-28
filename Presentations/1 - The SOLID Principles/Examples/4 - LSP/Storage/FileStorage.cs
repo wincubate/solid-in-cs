@@ -1,35 +1,30 @@
-using System;
-using System.IO;
-using System.Threading.Tasks;
+namespace Wincubate.Module1;
 
-namespace Wincubate.Module1
+class FileStorage : IStorage
 {
-    class FileStorage : IStorage
+    public async Task<string> GetDataAsStringAsync(string sourceFilePath)
     {
-        public async Task<string> GetDataAsStringAsync(string sourceFilePath)
+        try
         {
-            try
-            {
-                return await File.ReadAllTextAsync(sourceFilePath);
-            }
-            catch (Exception exception)
-            {
-                string message = $"Could not load from \"{sourceFilePath}\"";
-                throw new StockStorageException(message, exception);
-            }
+            return await File.ReadAllTextAsync(sourceFilePath);
         }
-
-        public async Task StoreDataAsStringAsync(string destinationFilePath, string outputDataAsString)
+        catch (Exception exception)
         {
-            try
-            {
-                await File.WriteAllTextAsync(destinationFilePath, outputDataAsString);
-            }
-            catch (Exception exception)
-            {
-                string message = $"Could not write to \"{destinationFilePath}\"";
-                throw new StockStorageException(message, exception);
-            }
+            string message = $"Could not load from \"{sourceFilePath}\"";
+            throw new StockStorageException(message, exception);
+        }
+    }
+
+    public async Task StoreDataAsStringAsync(string destinationFilePath, string outputDataAsString)
+    {
+        try
+        {
+            await File.WriteAllTextAsync(destinationFilePath, outputDataAsString);
+        }
+        catch (Exception exception)
+        {
+            string message = $"Could not write to \"{destinationFilePath}\"";
+            throw new StockStorageException(message, exception);
         }
     }
 }

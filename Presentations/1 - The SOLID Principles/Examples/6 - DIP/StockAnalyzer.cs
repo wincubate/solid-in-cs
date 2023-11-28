@@ -1,40 +1,37 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Wincubate.Module1.DomainLayer;
+using Wincubate.Module1.Domain;
 
-namespace Wincubate.Module1
+namespace Wincubate.Module1;
+
+class StockAnalyzer
 {
-    class StockAnalyzer
+    private readonly IReadStorage _readStorage;
+    private readonly IWriteStorage _writeStorage;
+    private readonly IParser _parser;
+    private readonly IFormatter _formatter;
+
+    public StockAnalyzer(
+        IReadStorage readStorage,
+        IWriteStorage writeStorage,
+        IParser parser,
+        IFormatter formatter
+    )
     {
-        private readonly IReadStorage _readStorage;
-        private readonly IWriteStorage _writeStorage;
-        private readonly IParser _parser;
-        private readonly ISerializer _serializer;
+        _readStorage = readStorage;
+        _writeStorage = writeStorage;
+        _parser = parser;
+        _formatter = formatter;
+    }
 
-        public StockAnalyzer(
-            IReadStorage readStorage,
-            IWriteStorage writeStorage,
-            IParser parser,
-            ISerializer serializer
-        )
-        {
-            _readStorage = readStorage;
-            _writeStorage = writeStorage;
-            _parser = parser;
-            _serializer = serializer;
-        }
+    public async Task ProcessAsync()
+    {
+        string inputDataAsString = await _readStorage.GetDataAsStringAsync();
+        IEnumerable<StockPosition> stockPositions = _parser.Parse(inputDataAsString);
 
-        public async Task ProcessAsync()
-        {
-            string inputDataAsString = await _readStorage.GetDataAsStringAsync();
-            IEnumerable<StockPosition> stockPositions = _parser.Parse(inputDataAsString);
+        Computation computation = new Computation();
+        IEnumerable<StockPosition> output = computation.Execute(stockPositions);
 
-            Computation computation = new Computation();
-            IEnumerable<StockPosition> output = computation.Execute(stockPositions);
+        string outputDataAsString = _formatter.FormatData(output);
 
-            string outputDataAsString = _serializer.SerializeData(output);
-
-            await _writeStorage.StoreDataAsStringAsync(outputDataAsString);
-        }
+        await _writeStorage.StoreDataAsStringAsync(outputDataAsString);
     }
 }

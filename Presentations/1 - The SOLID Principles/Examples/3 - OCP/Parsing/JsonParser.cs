@@ -1,16 +1,13 @@
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using Wincubate.Module1.DomainLayer;
-using System.Linq;
+using System.Text.Json;
+using Wincubate.Module1.Domain;
 
-namespace Wincubate.Module1
+namespace Wincubate.Module1;
+
+class JsonParser : IParser
 {
-    class JsonParser : IParser
+    public IEnumerable<StockPosition> Parse(string dataAsString)
     {
-        public IEnumerable<StockPosition> Parse(string dataAsString)
-        {
-            return JsonConvert.DeserializeObject<IEnumerable<StockPosition>>(dataAsString)
-                ?? Enumerable.Empty<StockPosition>();
-        }
+        return JsonSerializer.Deserialize<IEnumerable<StockPosition>>(dataAsString)
+            ?? Enumerable.Empty<StockPosition>();
     }
 }

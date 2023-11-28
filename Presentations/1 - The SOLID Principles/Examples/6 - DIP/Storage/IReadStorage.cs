@@ -1,9 +1,6 @@
-using System.Threading.Tasks;
+namespace Wincubate.Module1;
 
-namespace Wincubate.Module1
+interface IReadStorage
 {
-    interface IReadStorage
-    {
-        Task<string> GetDataAsStringAsync();
-    }
+    Task<string> GetDataAsStringAsync();
 }

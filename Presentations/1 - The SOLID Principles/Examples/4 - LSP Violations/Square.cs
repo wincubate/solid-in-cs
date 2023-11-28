@@ -1,13 +1,12 @@
-using Wincubate.Module1.DomainLayer;
+using Wincubate.Module1.Domain;
 
-namespace Wincubate.Module1
+namespace Wincubate.Module1;
+
+// Violates LSP Contract Rule:
+// Strengthened precondition: Width == Height
+record class Square : Rectangle
 {
-    // Violates LSP Contract Rule:
-    // Strengthened precondition: Width == Height
-    class Square : Rectangle
+    public Square(int size) : base(size, size)
     {
-        public Square(int size) : base(size, size)
-        {
-        }
     }
 }

@@ -1,10 +1,7 @@
-using System.Threading.Tasks;
+namespace Wincubate.Module1;
 
-namespace Wincubate.Module1
+interface IStorage
 {
-    interface IStorage
-    {
-        Task<string> GetDataAsStringAsync(string sourceFilePath);
-        Task StoreDataAsStringAsync(string destinationFilePath, string outputDataAsString);
-    }
+    Task<string> GetDataAsStringAsync(string sourceFilePath);
+    Task StoreDataAsStringAsync(string destinationFilePath, string outputDataAsString);
 }

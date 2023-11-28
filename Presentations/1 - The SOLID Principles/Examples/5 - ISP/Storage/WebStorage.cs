@@ -1,31 +1,24 @@
-using System;
-using System.Net.Http;
-using System.Threading.Tasks;
+namespace Wincubate.Module1;
 
-namespace Wincubate.Module1
+class WebStorage : IReadStorage
 {
-    class WebStorage : IReadStorage
+    public string Url { get; }
+
+    public WebStorage(string url)
     {
-        public string Url { get; }
+        Url = url;
+    }
 
-        public WebStorage(string url)
+    public async Task<string> GetDataAsStringAsync()
+    {
+        try
         {
-            Url = url;
+            using HttpClient client = new();
+            return await client.GetStringAsync(Url);
         }
-
-        public async Task<string> GetDataAsStringAsync()
+        catch (Exception exception)
         {
-            try
-            {
-                using (HttpClient client = new HttpClient())
-                {
-                    return await client.GetStringAsync(Url);
-                }
-            }
-            catch (Exception exception)
-            {
-                throw new StockStorageException($"Could not load from \"{Url}\"", exception);
-            }
+            throw new StockStorageException($"Could not load from \"{Url}\"", exception);
         }
     }
 }

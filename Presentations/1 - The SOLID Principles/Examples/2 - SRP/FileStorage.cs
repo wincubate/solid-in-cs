@@ -1,20 +1,16 @@
-using System.IO;
-using System.Threading.Tasks;
+namespace Wincubate.Module1;
 
-namespace Wincubate.Module1
+class FileStorage
 {
-    class FileStorage
+    public Task<string> GetDataAsStringAsync(string sourceFilePath)
     {
-        public Task<string> GetDataAsStringAsync(string sourceFilePath)
-        {
-            return File.ReadAllTextAsync(sourceFilePath);
-        }
+        return File.ReadAllTextAsync(sourceFilePath);
+    }
 
-        public Task StoreDataAsStringAsync(
-            string destinationFilePath,
-            string outputDataAsString)
-        {
-            return File.WriteAllTextAsync(destinationFilePath, outputDataAsString);
-        }
+    public Task StoreDataAsStringAsync(
+        string destinationFilePath,
+        string outputDataAsString)
+    {
+        return File.WriteAllTextAsync(destinationFilePath, outputDataAsString);
     }
 }

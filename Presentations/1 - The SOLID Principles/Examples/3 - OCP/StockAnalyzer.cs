@@ -1,35 +1,32 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Wincubate.Module1.DomainLayer;
+using Wincubate.Module1.Domain;
 
-namespace Wincubate.Module1
+namespace Wincubate.Module1;
+
+class StockAnalyzer
 {
-    class StockAnalyzer
+    private readonly IStorage _storage;
+    private readonly IParser _parser;
+    private readonly IFormatter _formatter;
+
+    public StockAnalyzer()
     {
-        private readonly IStorage _storage;
-        private readonly IParser _parser;
-        private readonly ISerializer _serializer;
+        _storage = new FileStorage();
+        //_parser = new CsvParser();
+        _parser = new JsonParser();
+        //_formatter = new CsvFormatter();
+        _formatter = new JsonFormatter();
+    }
 
-        public StockAnalyzer()
-        {
-            _storage = new FileStorage();
-            //_parser = new CsvParser();
-            _parser = new JsonParser();
-            //_serializer = new CsvSerializer();
-            _serializer = new JsonSerializer();
-        }
+    public async Task ProcessAsync(string sourceFilePath, string destinationFilePath)
+    {
+        string inputDataAsString = await _storage.GetDataAsStringAsync(sourceFilePath);
+        IEnumerable<StockPosition> stockPositions = _parser.Parse(inputDataAsString);
 
-        public async Task ProcessAsync(string sourceFilePath, string destinationFilePath)
-        {
-            string inputDataAsString = await _storage.GetDataAsStringAsync(sourceFilePath);
-            IEnumerable<StockPosition> stockPositions = _parser.Parse(inputDataAsString);
+        Computation computation = new Computation();
+        IEnumerable<StockPosition> output = computation.Execute(stockPositions);
 
-            Computation computation = new Computation();
-            IEnumerable<StockPosition> output = computation.Execute(stockPositions);
+        string outputDataAsString = _formatter.FormatData(output);
 
-            string outputDataAsString = _serializer.SerializeData(output);
-
-            await _storage.StoreDataAsStringAsync(destinationFilePath, outputDataAsString);
-        }
+        await _storage.StoreDataAsStringAsync(destinationFilePath, outputDataAsString);
     }
 }

@@ -1,6 +1,5 @@
-namespace Wincubate.Module1
+namespace Wincubate.Module1;
+
+interface IStorage : IReadStorage, IWriteStorage
 {
-    interface IStorage : IReadStorage, IWriteStorage
-    {
-    }
 }

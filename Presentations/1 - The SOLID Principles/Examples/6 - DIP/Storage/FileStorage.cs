@@ -1,44 +1,39 @@
-using System;
-using System.IO;
-using System.Threading.Tasks;
+namespace Wincubate.Module1;
 
-namespace Wincubate.Module1
+class FileStorage : IStorage
 {
-    class FileStorage : IStorage
+    public string SourcePath { get; }
+    public string DestinationPath { get; }
+
+    public FileStorage(string sourcePath, string destinationPath)
     {
-        public string SourcePath { get; }
-        public string DestinationPath { get; }
+        SourcePath = sourcePath;
+        DestinationPath = destinationPath;
+    }
 
-        public FileStorage(string sourcePath, string destinationPath)
+    public async Task<string> GetDataAsStringAsync()
+    {
+        try
         {
-            SourcePath = sourcePath;
-            DestinationPath = destinationPath;
+            return await File.ReadAllTextAsync(SourcePath);
         }
-
-        public async Task<string> GetDataAsStringAsync()
+        catch (Exception exception)
         {
-            try
-            {
-                return await File.ReadAllTextAsync(SourcePath);
-            }
-            catch (Exception exception)
-            {
-                string message = $"Could not load from \"{SourcePath}\"";
-                throw new StockStorageException(message, exception);
-            }
+            string message = $"Could not load from \"{SourcePath}\"";
+            throw new StockStorageException(message, exception);
         }
+    }
 
-        public async Task StoreDataAsStringAsync(string outputDataAsString)
+    public async Task StoreDataAsStringAsync(string outputDataAsString)
+    {
+        try
         {
-            try
-            {
-                await File.WriteAllTextAsync(DestinationPath, outputDataAsString);
-            }
-            catch (Exception exception)
-            {
-                string message = $"Could not write to \"{DestinationPath}\"";
-                throw new StockStorageException(message, exception);
-            }
+            await File.WriteAllTextAsync(DestinationPath, outputDataAsString);
+        }
+        catch (Exception exception)
+        {
+            string message = $"Could not write to \"{DestinationPath}\"";
+            throw new StockStorageException(message, exception);
         }
     }
 }

@@ -1,9 +1,6 @@
-using System.Threading.Tasks;
+namespace Wincubate.Module1;
 
-namespace Wincubate.Module1
+interface IWriteStorage
 {
-    interface IWriteStorage
-    {
-        Task StoreDataAsStringAsync(string outputDataAsString);
-    }
+    Task StoreDataAsStringAsync(string outputDataAsString);
 }

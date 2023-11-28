@@ -1,27 +1,26 @@
-using Wincubate.Module1.DomainLayer;
+using Wincubate.Module1.Domain;
 
-namespace Wincubate.Module1
+namespace Wincubate.Module1;
+
+class ElectricCar : Car
 {
-    class ElectricCar : Car
+    public bool IsEnginePreparedToRun { get; private set; }
+
+    public ElectricCar()
     {
-        public bool IsEnginePreparedToRun { get; private set; }
+        IsEnginePreparedToRun = false;
+    }
 
-        public ElectricCar()
-        {
-            IsEnginePreparedToRun = false;
-        }
+    public override void TurnIgnitionKey()
+    {
+        IsEnginePreparedToRun = true;
+    }
 
-        public override void TurnIgnitionKey()
+    public void PressGasPedal()
+    {
+        if (IsEnginePreparedToRun)
         {
-            IsEnginePreparedToRun = true;
-        }
-
-        public void PressGasPedal()
-        {
-            if (IsEnginePreparedToRun)
-            {
-                IsEngineRunning = true;
-            }
+            IsEngineRunning = true;
         }
     }
 }
