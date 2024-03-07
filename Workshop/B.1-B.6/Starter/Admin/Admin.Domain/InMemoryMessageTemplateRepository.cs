@@ -1,4 +1,4 @@
-ï»¿using Admin.Domain.Interfaces;
+using Admin.Domain.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -27,7 +27,7 @@ namespace Admin.Domain
                     Kind = "UserIsCreatedOk",
                     Culture = "da",
                     Subject = "Konto oprettet",
-                    BodyTemplate = "KÃ¦re {0}. Din konto hos Cinemas 'R Us er nu oprettet. :-)"
+                    BodyTemplate = "Kære {0}. Din konto hos Cinemas 'R Us er nu oprettet. :-)"
                 },
                 new MessageTemplate
                 {
@@ -43,7 +43,7 @@ namespace Admin.Domain
                     Kind = "UserIsDeletedOk",
                     Culture = "da",
                     Subject = "Konto slettet",
-                    BodyTemplate = "KÃ¦re {0}. Vi er sÃ¥ kede af, at du forlader os... :-("
+                    BodyTemplate = "Kære {0}. Vi er så kede af, at du forlader os... :-("
                 }
             };
         }

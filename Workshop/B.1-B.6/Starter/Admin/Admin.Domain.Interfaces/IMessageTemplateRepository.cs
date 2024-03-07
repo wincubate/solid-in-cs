@@ -1,4 +1,4 @@
-﻿namespace Admin.Domain.Interfaces
+namespace Admin.Domain.Interfaces
 {
     public interface IMessageTemplateRepository
     {

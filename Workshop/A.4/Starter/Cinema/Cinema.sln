@@ -4,8 +4,6 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.UI.ConsoleApp", "Cinema.UI.ConsoleApp\Cinema.UI.ConsoleApp.csproj", "{DC948825-C117-415A-A14F-7A765A9962D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.UI.WpfApp", "Cinema.UI.WpfApp\Cinema.UI.WpfApp.csproj", "{0DFE5AD9-CE3E-4AF4-B4EA-E8E0B4316AC9}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.DataAccess.Sql", "Cinema.DataAccess.Sql\Cinema.DataAccess.Sql.csproj", "{8517710A-37D2-44B8-900B-B8B836C0DD86}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Domain", "Cinema.Domain\Cinema.Domain.csproj", "{A7803B50-DE33-444D-B5FC-31C1654B68A2}"

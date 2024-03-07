@@ -13,8 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Domain.Interfaces", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.PresentationLogic", "Cinema.PresentationLogic\Cinema.PresentationLogic.csproj", "{63932E9B-58EC-47FE-9C07-1F9AEDCD5DE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.UI.WpfApp", "Cinema.UI.WpfApp\Cinema.UI.WpfApp.csproj", "{0DFE5AD9-CE3E-4AF4-B4EA-E8E0B4316AC9}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
