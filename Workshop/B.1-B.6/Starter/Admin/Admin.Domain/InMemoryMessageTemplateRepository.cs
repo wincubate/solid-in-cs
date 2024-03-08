@@ -53,5 +53,11 @@ namespace Admin.Domain
             return _messageTemplates
                 .Single(mt => mt.Id == id);
         }
+
+        public MessageTemplate GetByTemplateKindCulture(string kind, string culture)
+        {
+            return _messageTemplates
+                .Single(mt => mt.Kind == kind && mt.Culture == culture);
+        }
     }
 }
